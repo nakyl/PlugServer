@@ -1,0 +1,32 @@
+language: java
+
+dist: trusty
+sudo: required
+
+jdk:
+  - oraclejdk8
+
+addons:
+  sonarqube:
+    token:
+      secure: $SONAR_TOKEN
+    github_token:
+      secure: $SONAR_GITHUB_TOKEN
+  srcclr: true
+  
+script: 
+  - mvn clean install coveralls:report jacoco:prepare-agent
+  - mvn sonar:sonar
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
+
+notifications:
+email: false
+
+deploy:
+ provider: heroku
+ api-key: 
+  secure: $HEROKU_API_KEY
+app: nakylapp
