@@ -26,7 +26,6 @@ notifications:
 email: false
 
 deploy:
- provider: heroku
- api-key: 
-  secure: $HEROKU_API_KEY
-app: nakylapp
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: nakylapp
