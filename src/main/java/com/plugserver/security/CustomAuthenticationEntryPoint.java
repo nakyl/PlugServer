@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+	@Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException ae) throws IOException, ServletException {

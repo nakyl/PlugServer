@@ -41,6 +41,7 @@ public class Switch implements OrviboDiscoveryListener {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			logger.error(e.getMessage(), e);
+			Thread.currentThread().interrupt();
 		}
 	}
 	
@@ -50,9 +51,11 @@ public class Switch implements OrviboDiscoveryListener {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			logger.error(e.getMessage(), e);
+			Thread.currentThread().interrupt();
 		}
 	}
 
+	@Override
 	public void deviceDiscovered(OrviboDevice device) {
 		if (device == null) {
 			return;
