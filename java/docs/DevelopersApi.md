@@ -1,6 +1,6 @@
 # DevelopersApi
 
-All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServer/1.0.0*
+All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServerApp/0.0.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

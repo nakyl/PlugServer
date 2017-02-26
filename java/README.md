@@ -86,7 +86,7 @@ public class DevelopersApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServer/1.0.0*
+All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServerApp/0.0.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
