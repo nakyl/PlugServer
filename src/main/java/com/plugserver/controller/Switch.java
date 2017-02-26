@@ -35,8 +35,8 @@ public class Switch implements OrviboDiscoveryListener {
 
 	}
 	
-	public void on() {
-		client.socketWithDeviceId("ACCF238D03D2").on();
+	public void on(final String deviceID) {
+		client.socketWithDeviceId(deviceID).on();
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
@@ -45,8 +45,8 @@ public class Switch implements OrviboDiscoveryListener {
 		}
 	}
 	
-	public void off() {
-		client.socketWithDeviceId("ACCF238D03D2").off();
+	public void off(final String deviceID) {
+		client.socketWithDeviceId(deviceID).off();
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

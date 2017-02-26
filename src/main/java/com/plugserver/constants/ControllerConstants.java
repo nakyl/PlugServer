@@ -20,6 +20,9 @@ public final class ControllerConstants {
 	/** Param change state */
 	public static final String CHANGE_STATE_PARAM = "changeState";
 	
+	/** Param change state */
+	public static final String DEVICE_ID_PARAM = "deviceID";
+	
 	/** Data Type Json */
 	public static final String DATA_TYPE_JSON = "application/json";
 	

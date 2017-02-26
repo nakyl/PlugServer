@@ -48,6 +48,7 @@ public class SwitchTest {
     public void switchON() throws Exception {
     	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
                 .param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.ON.name())
+                .param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
                 .param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -57,6 +58,7 @@ public class SwitchTest {
     public void switchOFF() throws Exception {
     	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
     			.param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.OFF.name())
+    			.param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
     			.param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -66,32 +68,45 @@ public class SwitchTest {
     public void switchInvalidParam() throws Exception {
     	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
     			.param("fake", PowerState.OFF.name())
+    			.param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
     			.param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
     
     @Test
-    public void switchInvalidArgument() throws Exception {
+    public void switchBadRequest() throws Exception {
     	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
-    			.param(ControllerConstants.CHANGE_STATE_PARAM, "fake")
     			.param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
+    }
+    
+    @Test
+    public void switchBadRequestOneParam() throws Exception {
+    	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
+    			.param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
+    			.param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
     
     @Test
     
     public void switchONUnauthorized() throws Exception {
 		mockMvc.perform(
-				put(ControllerConstants.SWITCH_URL).param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.ON.name()))
+				put(ControllerConstants.SWITCH_URL)
+				.param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.ON.name())
+				.param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2"))
 				.andExpect(status().isUnauthorized());
     }
     
     @Test
     public void switchOFFUnauthorized() throws Exception {
-		mockMvc.perform(put(ControllerConstants.SWITCH_URL).param(ControllerConstants.CHANGE_STATE_PARAM,
-				PowerState.OFF.name())).andExpect(status().isUnauthorized());
+		mockMvc.perform(put(ControllerConstants.SWITCH_URL)
+				.param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.OFF.name())
+				.param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
+				).andExpect(status().isUnauthorized());
     }
     
     private final String getAccessToken(String username, String password) throws Exception {    

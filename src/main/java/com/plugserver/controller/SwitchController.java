@@ -28,12 +28,13 @@ public class SwitchController {
 	}
 
     @RequestMapping(method=RequestMethod.PUT, produces = ControllerConstants.DATA_TYPE_JSON)
-    public Status queryMethod(@RequestParam(ControllerConstants.CHANGE_STATE_PARAM) String changeState) {
+    public Status queryMethod(@RequestParam(ControllerConstants.CHANGE_STATE_PARAM) String changeState,
+    		@RequestParam(ControllerConstants.DEVICE_ID_PARAM) String deviceID) {
     	
     	final Status result = new Status();
     	
     	try {
-			OrviboClient.getInstance().socketWithDeviceId("ACCF238D03D2").subscribe();
+			OrviboClient.getInstance().socketWithDeviceId(deviceID).subscribe();
 		} catch (SocketException e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -41,12 +42,12 @@ public class SwitchController {
     	Switch switchControl = new Switch();
     	
     	if(PowerState.OFF.name().equals(changeState)) {
-    		switchControl.off();
+    		switchControl.off(deviceID);
     	} else {
-    		switchControl.on();
+    		switchControl.on(deviceID);
     	}
     	
-    	result.setStatusPlug(switchControl.getClient().socketWithDeviceId("ACCF238D03D2").getPowerState().name());
+    	result.setStatusPlug(switchControl.getClient().socketWithDeviceId(deviceID).getPowerState().name());
     	
         return result;
     }

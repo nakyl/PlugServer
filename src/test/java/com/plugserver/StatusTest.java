@@ -42,13 +42,24 @@ public class StatusTest {
     public void statusOk() throws Exception {
     	mockMvc.perform(get(ControllerConstants.STATUS_URL)
                 .param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
+                .param(ControllerConstants.DEVICE_ID_PARAM, "ALL")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
     
     @Test
+    public void statusNoParam() throws Exception {
+    	mockMvc.perform(get(ControllerConstants.STATUS_URL)
+                .param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("admin", "admin"))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    
+    @Test
     public void statusWithAuthorization() throws Exception {
-        mockMvc.perform(get(ControllerConstants.STATUS_URL)).andExpect(status().isOk());
+        mockMvc.perform(get(ControllerConstants.STATUS_URL)
+        		.param(ControllerConstants.DEVICE_ID_PARAM, "ALL"))
+        .andExpect(status().isOk());
     }
     
     private final String getAccessToken(String username, String password) throws Exception {    
