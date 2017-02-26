@@ -4,16 +4,16 @@ All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServer/1.0
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchInventory**](DevelopersApi.md#searchInventory) | **GET** /status | get plug status
+[**getStatus**](DevelopersApi.md#getStatus) | **GET** /status | get plug status
 
 
-<a name="searchInventory"></a>
-# **searchInventory**
-> List&lt;Status&gt; searchInventory(deviceId)
+<a name="getStatus"></a>
+# **getStatus**
+> List&lt;Status&gt; getStatus(deviceId)
 
 get plug status
 
-By passing in the appropriate options, you can search for available inventory in the system 
+Check status for plug 
 
 ### Example
 ```java
@@ -23,12 +23,12 @@ By passing in the appropriate options, you can search for available inventory in
 
 
 DevelopersApi apiInstance = new DevelopersApi();
-String deviceId = "deviceId_example"; // String | pass an optional search string for looking up inventory
+String deviceId = "deviceId_example"; // String | pass the device id to get status
 try {
-    List<Status> result = apiInstance.searchInventory(deviceId);
+    List<Status> result = apiInstance.getStatus(deviceId);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DevelopersApi#searchInventory");
+    System.err.println("Exception when calling DevelopersApi#getStatus");
     e.printStackTrace();
 }
 ```
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deviceId** | **String**| pass an optional search string for looking up inventory |
+ **deviceId** | **String**| pass the device id to get status |
 
 ### Return type
 

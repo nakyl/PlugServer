@@ -71,12 +71,12 @@ public class DevelopersApiExample {
     public static void main(String[] args) {
         
         DevelopersApi apiInstance = new DevelopersApi();
-        String deviceId = "deviceId_example"; // String | pass an optional search string for looking up inventory
+        String deviceId = "deviceId_example"; // String | pass the device id to get status
         try {
-            List<Status> result = apiInstance.searchInventory(deviceId);
+            List<Status> result = apiInstance.getStatus(deviceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DevelopersApi#searchInventory");
+            System.err.println("Exception when calling DevelopersApi#getStatus");
             e.printStackTrace();
         }
     }
@@ -90,7 +90,7 @@ All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServer/1.0
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DevelopersApi* | [**searchInventory**](docs/DevelopersApi.md#searchInventory) | **GET** /status | get plug status
+*DevelopersApi* | [**getStatus**](docs/DevelopersApi.md#getStatus) | **GET** /status | get plug status
 
 
 ## Documentation for Models

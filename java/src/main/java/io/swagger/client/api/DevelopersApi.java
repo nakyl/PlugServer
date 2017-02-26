@@ -42,13 +42,13 @@ public class DevelopersApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for searchInventory */
-    private com.squareup.okhttp.Call searchInventoryCall(String deviceId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for getStatus */
+    private com.squareup.okhttp.Call getStatusCall(String deviceId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'deviceId' is set
         if (deviceId == null) {
-            throw new ApiException("Missing the required parameter 'deviceId' when calling searchInventory(Async)");
+            throw new ApiException("Missing the required parameter 'deviceId' when calling getStatus(Async)");
         }
         
 
@@ -93,38 +93,38 @@ public class DevelopersApi {
 
     /**
      * get plug status
-     * By passing in the appropriate options, you can search for available inventory in the system 
-     * @param deviceId pass an optional search string for looking up inventory (required)
+     * Check status for plug 
+     * @param deviceId pass the device id to get status (required)
      * @return List&lt;Status&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<Status> searchInventory(String deviceId) throws ApiException {
-        ApiResponse<List<Status>> resp = searchInventoryWithHttpInfo(deviceId);
+    public List<Status> getStatus(String deviceId) throws ApiException {
+        ApiResponse<List<Status>> resp = getStatusWithHttpInfo(deviceId);
         return resp.getData();
     }
 
     /**
      * get plug status
-     * By passing in the appropriate options, you can search for available inventory in the system 
-     * @param deviceId pass an optional search string for looking up inventory (required)
+     * Check status for plug 
+     * @param deviceId pass the device id to get status (required)
      * @return ApiResponse&lt;List&lt;Status&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<Status>> searchInventoryWithHttpInfo(String deviceId) throws ApiException {
-        com.squareup.okhttp.Call call = searchInventoryCall(deviceId, null, null);
+    public ApiResponse<List<Status>> getStatusWithHttpInfo(String deviceId) throws ApiException {
+        com.squareup.okhttp.Call call = getStatusCall(deviceId, null, null);
         Type localVarReturnType = new TypeToken<List<Status>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * get plug status (asynchronously)
-     * By passing in the appropriate options, you can search for available inventory in the system 
-     * @param deviceId pass an optional search string for looking up inventory (required)
+     * Check status for plug 
+     * @param deviceId pass the device id to get status (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchInventoryAsync(String deviceId, final ApiCallback<List<Status>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStatusAsync(String deviceId, final ApiCallback<List<Status>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -145,7 +145,7 @@ public class DevelopersApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchInventoryCall(deviceId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStatusCall(deviceId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Status>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

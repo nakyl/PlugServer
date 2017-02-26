@@ -20,15 +20,15 @@ public class DevelopersApiTest {
     /**
      * get plug status
      *
-     * By passing in the appropriate options, you can search for available inventory in the system 
+     * Check status for plug 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void searchInventoryTest() throws ApiException {
+    public void getStatusTest() throws ApiException {
         String deviceId = null;
-        // List<Status> response = api.searchInventory(deviceId);
+        // List<Status> response = api.getStatus(deviceId);
 
         // TODO: test validations
     }
