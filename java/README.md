@@ -61,12 +61,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
-import io.swagger.client.api.DevelopersApi;
+import io.swagger.client.api.AdminisApi;
 
 import java.io.File;
 import java.util.*;
 
-public class DevelopersApiExample {
+public class AdminisApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -75,13 +75,13 @@ public class DevelopersApiExample {
         OAuth OauthSecurity = (OAuth) defaultClient.getAuthentication("OauthSecurity");
         OauthSecurity.setAccessToken("YOUR ACCESS TOKEN");
 
-        DevelopersApi apiInstance = new DevelopersApi();
+        AdminisApi apiInstance = new AdminisApi();
         String deviceID = "deviceID_example"; // String | pass the Device ID to get status
         try {
             List<PlugAndStatus> result = apiInstance.getStatus(deviceID);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DevelopersApi#getStatus");
+            System.err.println("Exception when calling AdminisApi#getStatus");
             e.printStackTrace();
         }
     }
@@ -95,8 +95,8 @@ All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServerApp/
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DevelopersApi* | [**getStatus**](docs/DevelopersApi.md#getStatus) | **GET** /status | get plug status
-*DevelopersApi* | [**switchPlugMode**](docs/DevelopersApi.md#switchPlugMode) | **PUT** /switch | Switch plug mode - ON/OFF
+*AdminisApi* | [**getStatus**](docs/AdminisApi.md#getStatus) | **GET** /status | get plug status
+*AdminisApi* | [**switchPlugMode**](docs/AdminisApi.md#switchPlugMode) | **PUT** /switch | Switch plug mode - ON/OFF
 
 
 ## Documentation for Models
