@@ -8,10 +8,13 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * Status
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-26T22:04:54.464Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-27T15:43:28.596Z")
 public class Status {
   @SerializedName("status")
   private String status = null;
+
+  @SerializedName("deviceID")
+  private String deviceID = null;
 
   public Status status(String status) {
     this.status = status;
@@ -31,6 +34,24 @@ public class Status {
     this.status = status;
   }
 
+  public Status deviceID(String deviceID) {
+    this.deviceID = deviceID;
+    return this;
+  }
+
+   /**
+   * Get deviceID
+   * @return deviceID
+  **/
+  @ApiModelProperty(example = "DSDFERSSASDF", required = true, value = "")
+  public String getDeviceID() {
+    return deviceID;
+  }
+
+  public void setDeviceID(String deviceID) {
+    this.deviceID = deviceID;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -41,12 +62,13 @@ public class Status {
       return false;
     }
     Status status = (Status) o;
-    return Objects.equals(this.status, status.status);
+    return Objects.equals(this.status, status.status) &&
+        Objects.equals(this.deviceID, status.deviceID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, deviceID);
   }
 
 
@@ -56,6 +78,7 @@ public class Status {
     sb.append("class Status {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    deviceID: ").append(toIndentedString(deviceID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

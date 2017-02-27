@@ -94,7 +94,7 @@ public class DevelopersApi {
     /**
      * get plug status
      * Check status for plug 
-     * @param deviceId pass the device id to get status (required)
+     * @param deviceId pass the Device ID to get status (required)
      * @return List&lt;Status&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -106,7 +106,7 @@ public class DevelopersApi {
     /**
      * get plug status
      * Check status for plug 
-     * @param deviceId pass the device id to get status (required)
+     * @param deviceId pass the Device ID to get status (required)
      * @return ApiResponse&lt;List&lt;Status&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -119,7 +119,7 @@ public class DevelopersApi {
     /**
      * get plug status (asynchronously)
      * Check status for plug 
-     * @param deviceId pass the device id to get status (required)
+     * @param deviceId pass the Device ID to get status (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

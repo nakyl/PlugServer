@@ -71,7 +71,7 @@ public class DevelopersApiExample {
     public static void main(String[] args) {
         
         DevelopersApi apiInstance = new DevelopersApi();
-        String deviceId = "deviceId_example"; // String | pass the device id to get status
+        String deviceId = "deviceId_example"; // String | pass the Device ID to get status
         try {
             List<Status> result = apiInstance.getStatus(deviceId);
             System.out.println(result);

@@ -23,7 +23,7 @@ Check status for plug
 
 
 DevelopersApi apiInstance = new DevelopersApi();
-String deviceId = "deviceId_example"; // String | pass the device id to get status
+String deviceId = "deviceId_example"; // String | pass the Device ID to get status
 try {
     List<Status> result = apiInstance.getStatus(deviceId);
     System.out.println(result);
@@ -37,7 +37,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deviceId** | **String**| pass the device id to get status |
+ **deviceId** | **String**| pass the Device ID to get status |
 
 ### Return type
 
