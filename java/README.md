@@ -69,11 +69,16 @@ import java.util.*;
 public class DevelopersApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: OauthSecurity
+        OAuth OauthSecurity = (OAuth) defaultClient.getAuthentication("OauthSecurity");
+        OauthSecurity.setAccessToken("YOUR ACCESS TOKEN");
+
         DevelopersApi apiInstance = new DevelopersApi();
-        String deviceId = "deviceId_example"; // String | pass the Device ID to get status
+        String deviceID = "deviceID_example"; // String | pass the Device ID to get status
         try {
-            List<Status> result = apiInstance.getStatus(deviceId);
+            List<PlugAndStatus> result = apiInstance.getStatus(deviceID);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DevelopersApi#getStatus");
@@ -91,17 +96,26 @@ All URIs are relative to *https://virtserver.swaggerhub.com/nakyl/PlugServerApp/
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DevelopersApi* | [**getStatus**](docs/DevelopersApi.md#getStatus) | **GET** /status | get plug status
+*DevelopersApi* | [**switchPlugMode**](docs/DevelopersApi.md#switchPlugMode) | **PUT** /switch | Switch plug mode - ON/OFF
 
 
 ## Documentation for Models
 
+ - [PlugAndStatus](docs/PlugAndStatus.md)
  - [Status](docs/Status.md)
 
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
 Authentication schemes defined for the API:
+### OauthSecurity
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorizatoin URL**: https://oauth.simple.api/authorization
+- **Scopes**: 
+  - admin: Admin scope
+
 
 ## Recommendation
 

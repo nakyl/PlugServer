@@ -6,14 +6,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Status
+ * PlugAndStatus
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-27T16:23:55.894Z")
-public class Status {
+public class PlugAndStatus {
   @SerializedName("status")
   private String status = null;
 
-  public Status status(String status) {
+  @SerializedName("deviceID")
+  private String deviceID = null;
+
+  public PlugAndStatus status(String status) {
     this.status = status;
     return this;
   }
@@ -31,6 +34,24 @@ public class Status {
     this.status = status;
   }
 
+  public PlugAndStatus deviceID(String deviceID) {
+    this.deviceID = deviceID;
+    return this;
+  }
+
+   /**
+   * Get deviceID
+   * @return deviceID
+  **/
+  @ApiModelProperty(example = "DSDFERSSASDF", required = true, value = "")
+  public String getDeviceID() {
+    return deviceID;
+  }
+
+  public void setDeviceID(String deviceID) {
+    this.deviceID = deviceID;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -40,22 +61,24 @@ public class Status {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Status status = (Status) o;
-    return Objects.equals(this.status, status.status);
+    PlugAndStatus plugAndStatus = (PlugAndStatus) o;
+    return Objects.equals(this.status, plugAndStatus.status) &&
+        Objects.equals(this.deviceID, plugAndStatus.deviceID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, deviceID);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Status {\n");
+    sb.append("class PlugAndStatus {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    deviceID: ").append(toIndentedString(deviceID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
