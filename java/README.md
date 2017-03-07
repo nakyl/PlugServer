@@ -111,8 +111,8 @@ Authentication schemes defined for the API:
 ### OauthSecurity
 
 - **Type**: OAuth
-- **Flow**: accessCode
-- **Authorizatoin URL**: https://oauth.simple.api/authorization
+- **Flow**: password
+- **Authorizatoin URL**: 
 - **Scopes**: 
   - admin: Admin scope
 
