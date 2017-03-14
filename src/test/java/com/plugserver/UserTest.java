@@ -8,14 +8,14 @@ import java.util.TreeSet;
 import org.junit.Test;
 
 import com.plugserver.domain.Authority;
-import com.plugserver.domain.User;
+import com.plugserver.domain.user_info;
 
 public class UserTest {
 
    
     @Test
     public void userGetSet() throws Exception {
-    	User usu = new User();
+    	user_info usu = new user_info();
     	assertNotNull(usu);
     	
     	Set<Authority> testAuth = new TreeSet<>();
@@ -39,7 +39,7 @@ public class UserTest {
     
     @Test
     public void userToString() throws Exception {
-    	User usu = new User();
+    	user_info usu = new user_info();
     	assertNotNull(usu);
     	
     	Set<Authority> testAuth = new TreeSet<>();
@@ -52,13 +52,13 @@ public class UserTest {
     	usu.setUsername("username");
     	
 		assertEquals(usu.toString(),
-				"User{username='username', pass='password', email='email', activated='true', activationKey='activationKey', resetPasswordKey='resetPasswordKey', authorities=[]}");
+				"user_info{username='username', pass='password', email='email', activated='true', activationKey='activationKey', resetPasswordKey='resetPasswordKey', authorities=[]}");
     	
     }
     
     @Test
     public void userHasCode() throws Exception {
-    	User usu = new User();
+    	user_info usu = new user_info();
     	assertNotNull(usu);
     	
     	Set<Authority> testAuth = new TreeSet<>();
@@ -76,7 +76,7 @@ public class UserTest {
     
     @Test
     public void userEquals() throws Exception {
-    	User usu = new User();
+    	user_info usu = new user_info();
     	assertNotNull(usu);
     	
     	Set<Authority> testAuth = new TreeSet<>();
@@ -92,12 +92,12 @@ public class UserTest {
     	
     	assertFalse(usu.equals(null));
     	
-    	User usuDisUserName = new User();
+    	user_info usuDisUserName = new user_info();
     	usuDisUserName.setUsername("fake");
     	assertFalse(usu.equals(usuDisUserName));
     	
-    	Object userObject = (Object) new User();
-    	((User)userObject).setUsername("username");
+    	Object userObject = (Object) new user_info();
+    	((user_info)userObject).setUsername("username");
     	assertTrue(usu.equals(userObject));
     	
     	assertFalse(usu.equals(new String()));

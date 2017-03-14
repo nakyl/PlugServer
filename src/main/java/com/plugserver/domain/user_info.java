@@ -7,7 +7,8 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-public class User {
+@Table(name = "user_info")
+public class user_info {
 
     @Id
     @Column(updatable = false, nullable = false)
@@ -103,9 +104,9 @@ public class User {
         	return false;
         }
 
-        User user = (User) o;
+        user_info user_info = (user_info) o;
 
-        if (!username.equals(user.username)) {
+        if (!username.equals(user_info.username)) {
         	return false;
         }
 
@@ -119,7 +120,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "user_info{" +
                 "username='" + username + '\'' +
                 ", pass='" + password + '\'' +
                 ", email='" + email + '\'' +

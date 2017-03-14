@@ -4,20 +4,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.plugserver.domain.User;
+import com.plugserver.domain.user_info;
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<user_info, String> {
 
-    @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username)")
-    User findByUsernameCaseInsensitive(@Param("username") String username);
-
-    @Query
-    User findByEmail(String email);
+    @Query("SELECT u FROM user_info u WHERE LOWER(u.username) = LOWER(:username)")
+    user_info findByUsernameCaseInsensitive(@Param("username") String username);
 
     @Query
-    User findByEmailAndActivationKey(String email, String activationKey);
+    user_info findByEmail(String email);
 
     @Query
-    User findByEmailAndResetPasswordKey(String email, String resetPasswordKey);
+    user_info findByEmailAndActivationKey(String email, String activationKey);
+
+    @Query
+    user_info findByEmailAndResetPasswordKey(String email, String resetPasswordKey);
 
 }

@@ -1,4 +1,4 @@
- INSERT INTO USER
+INSERT INTO user_info
             (username,
              email,
              password,
@@ -9,7 +9,7 @@ VALUES      ('admin',
              ,
 TRUE);
 
-INSERT INTO USER
+INSERT INTO user_info
             (username,
              email,
              password,
@@ -44,4 +44,4 @@ INSERT INTO user_authority
             (username,
              authority)
 VALUES      ('admin',
-             'ROLE_ADMIN');  
+'ROLE_ADMIN');

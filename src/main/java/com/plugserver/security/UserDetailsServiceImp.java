@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.plugserver.domain.Authority;
-import com.plugserver.domain.User;
+import com.plugserver.domain.user_info;
 import com.plugserver.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class UserDetailsServiceImp implements org.springframework.security.core.
         log.debug("Authenticating {}", login);
         String lowercaseLogin = login.toLowerCase();
 
-        User userFromDatabase;
+        user_info userFromDatabase;
         if(lowercaseLogin.contains("@")) {
             userFromDatabase = userRepository.findByEmail(lowercaseLogin);
         } else {
@@ -41,9 +41,9 @@ public class UserDetailsServiceImp implements org.springframework.security.core.
         }
 
         if (userFromDatabase == null) {
-            throw new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the database");
+            throw new UsernameNotFoundException("user_info " + lowercaseLogin + " was not found in the database");
         } else if (!userFromDatabase.isActivated()) {
-            throw new UserNotActivatedException("User " + lowercaseLogin + " is not activated");
+            throw new UserNotActivatedException("user_info " + lowercaseLogin + " is not activated");
         }
 
         Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
