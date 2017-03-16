@@ -94,6 +94,26 @@ public class SwitchTest {
     }
     
     @Test
+    public void switchONForbidden() throws Exception {
+    	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
+                .param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.ON.name())
+                .param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
+                .param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("user", "user"))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
+    
+    @Test
+    public void switchOFFForbidden() throws Exception {
+    	mockMvc.perform(put(ControllerConstants.SWITCH_URL)
+                .param(ControllerConstants.CHANGE_STATE_PARAM, PowerState.OFF.name())
+                .param(ControllerConstants.DEVICE_ID_PARAM, "ACCF238D03D2")
+                .param(ControllerConstants.ACCESS_TOKEN_PARAM, getAccessToken("user", "user"))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
+    
+    @Test
     
     public void switchONUnauthorized() throws Exception {
 		mockMvc.perform(

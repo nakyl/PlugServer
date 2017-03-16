@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.plugserver.constants.ControllerConstants;
 import com.plugserver.security.CustomAuthenticationEntryPoint;
 import com.plugserver.security.CustomLogoutSuccessHandler;
 
@@ -41,8 +42,8 @@ public class OAuth2Configuration extends ResourceServerConfigurerAdapter  {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
 			.authorizeRequests()
-                    .antMatchers("/status").permitAll()
-                    .antMatchers("/switch").hasAuthority("ROLE_ADMIN");
+                    .antMatchers(ControllerConstants.STATUS_URL).permitAll()
+                    .antMatchers(ControllerConstants.SWITCH_URL).hasAuthority("ROLE_ADMIN");
 
         }
         

@@ -17,13 +17,13 @@ import com.plugserver.constants.ControllerConstants;
 @RequestMapping(value=ControllerConstants.SWITCH_URL)
 public class SwitchController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SwitchController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SwitchController.class);
 	
 	static {
 		try {
 			OrviboClient.getInstance().globalDiscovery();
 		} catch (SocketException e) {
-			logger.error(e.getMessage(), e);
+			LOGGER.error(e.getMessage(), e);
 		}
 	}
 
@@ -36,7 +36,7 @@ public class SwitchController {
     	try {
 			OrviboClient.getInstance().socketWithDeviceId(deviceID).subscribe();
 		} catch (SocketException e) {
-			logger.error(e.getMessage(), e);
+			LOGGER.error(e.getMessage(), e);
 		}
     	
     	Switch switchControl = new Switch();

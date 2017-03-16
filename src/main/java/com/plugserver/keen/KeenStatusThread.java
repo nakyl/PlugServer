@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.plugserver.config.GlobalConfig;
+import com.plugserver.constants.KeenConstants;
 
 import io.keen.client.java.KeenClient;
 
@@ -20,9 +21,9 @@ public class KeenStatusThread extends Thread {
 		
 		if (GlobalConfig.isKeenEnable()) {
 		    Map<String, Object> event = new HashMap<>();
-		    event.put("deviceID", deviceID);
+		    event.put(KeenConstants.COLUMN_DEVICE_ID, deviceID);
 
-		    KeenClient.client().addEvent("status", event);
+		    KeenClient.client().addEvent(KeenConstants.EVENT_STATUS, event);
 		}
 
 	}

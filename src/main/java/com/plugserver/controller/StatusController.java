@@ -21,23 +21,26 @@ import com.plugserver.keen.KeenStatusThread;
 @RequestMapping(value = ControllerConstants.STATUS_URL)
 public class StatusController {
 
-	private static final Logger logger = LoggerFactory.getLogger(StatusController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(StatusController.class);
 	
 	static {
 		try {
 			OrviboClient.getInstance().globalDiscovery();
 		} catch (SocketException e) {
-			logger.error(e.getMessage(), e);
+			LOGGER.error(e.getMessage(), e);
 		}
 	}
 
 	@RequestMapping(method = RequestMethod.GET, produces = ControllerConstants.DATA_TYPE_JSON)
 	public List<PlugsAndStatus> queryMethod(@RequestParam(ControllerConstants.DEVICE_ID_PARAM) String mode) {
 
+		// Send data to keen.io
 		new KeenStatusThread(mode).start();
+		
 		final List<PlugsAndStatus> result = new ArrayList<>();
 		try {
 
+			// Get status of the device.
 			for (Entry<String, OrviboDevice> plugs : OrviboClient.getInstance().getAllDevices().entrySet()) {
 				PlugsAndStatus plugInfo = new PlugsAndStatus();
 				plugInfo.setPlugSerial(plugs.getValue().getDeviceId());
@@ -50,7 +53,7 @@ public class StatusController {
 			}
 
 		} catch (SocketException e) {
-			logger.error(e.getMessage(), e);
+			LOGGER.error(e.getMessage(), e);
 		}
 		return result;
 	}
