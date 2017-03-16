@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.tavalin.orvibo.OrviboClient;
 import com.github.tavalin.orvibo.devices.OrviboDevice;
 import com.plugserver.constants.ControllerConstants;
+import com.plugserver.keen.KeenStatusThread;
 
 @RestController
 @RequestMapping(value = ControllerConstants.STATUS_URL)
 public class StatusController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StatusController.class);
-
+	
 	static {
 		try {
 			OrviboClient.getInstance().globalDiscovery();
@@ -33,6 +34,7 @@ public class StatusController {
 	@RequestMapping(method = RequestMethod.GET, produces = ControllerConstants.DATA_TYPE_JSON)
 	public List<PlugsAndStatus> queryMethod(@RequestParam(ControllerConstants.DEVICE_ID_PARAM) String mode) {
 
+		new KeenStatusThread(mode).start();
 		final List<PlugsAndStatus> result = new ArrayList<>();
 		try {
 
