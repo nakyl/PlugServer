@@ -1,7 +1,3 @@
-TRUNCATE user_info CASCADE;
-TRUNCATE authority CASCADE;
-TRUNCATE user_authority CASCADE;
-
 INSERT INTO user_info
             (username,
              email,
